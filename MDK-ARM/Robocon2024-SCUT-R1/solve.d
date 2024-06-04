@@ -8,7 +8,7 @@ robocon2024-scut-r1\solve.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_d
 robocon2024-scut-r1\solve.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 robocon2024-scut-r1\solve.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 robocon2024-scut-r1\solve.o: ../Drivers/CMSIS/Include/core_cm4.h
-robocon2024-scut-r1\solve.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+robocon2024-scut-r1\solve.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 robocon2024-scut-r1\solve.o: ../Drivers/CMSIS/Include/cmsis_version.h
 robocon2024-scut-r1\solve.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 robocon2024-scut-r1\solve.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -16,7 +16,7 @@ robocon2024-scut-r1\solve.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 robocon2024-scut-r1\solve.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 robocon2024-scut-r1\solve.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 robocon2024-scut-r1\solve.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-robocon2024-scut-r1\solve.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+robocon2024-scut-r1\solve.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 robocon2024-scut-r1\solve.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 robocon2024-scut-r1\solve.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 robocon2024-scut-r1\solve.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
@@ -36,8 +36,8 @@ robocon2024-scut-r1\solve.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_t
 robocon2024-scut-r1\solve.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 robocon2024-scut-r1\solve.o: ../Middlewares/ST/ARM/DSP/Inc/arm_math.h
 robocon2024-scut-r1\solve.o: ../Drivers/CMSIS/Include/core_cm4.h
-robocon2024-scut-r1\solve.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
-robocon2024-scut-r1\solve.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+robocon2024-scut-r1\solve.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+robocon2024-scut-r1\solve.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 robocon2024-scut-r1\solve.o: ..\User\motorctrl.h
 robocon2024-scut-r1\solve.o: ../Core/Inc/can.h
 robocon2024-scut-r1\solve.o: ../Core/Inc/dma.h
@@ -49,7 +49,7 @@ robocon2024-scut-r1\solve.o: ..\User\PID_MODEL.h
 robocon2024-scut-r1\solve.o: ..\User\rtwtypes.h
 robocon2024-scut-r1\solve.o: ../Core/Inc/bsp_can.h
 robocon2024-scut-r1\solve.o: ..\User\motorctrl.h
-robocon2024-scut-r1\solve.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+robocon2024-scut-r1\solve.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 robocon2024-scut-r1\solve.o: ..\User\calculate.h
 robocon2024-scut-r1\solve.o: ../User/clamp/logic.h
 robocon2024-scut-r1\solve.o: ..\User\delay.h

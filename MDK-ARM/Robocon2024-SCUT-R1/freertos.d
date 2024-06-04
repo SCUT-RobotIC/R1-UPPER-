@@ -1,7 +1,7 @@
 robocon2024-scut-r1\freertos.o: ../Core/Src/freertos.c
 robocon2024-scut-r1\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-robocon2024-scut-r1\freertos.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
-robocon2024-scut-r1\freertos.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+robocon2024-scut-r1\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+robocon2024-scut-r1\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 robocon2024-scut-r1\freertos.o: ../Core/Inc/FreeRTOSConfig.h
 robocon2024-scut-r1\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 robocon2024-scut-r1\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -48,8 +48,8 @@ robocon2024-scut-r1\freertos.o: ../User/PID_MODEL.h
 robocon2024-scut-r1\freertos.o: ../User/rtwtypes.h
 robocon2024-scut-r1\freertos.o: ../Middlewares/ST/ARM/DSP/Inc/arm_math.h
 robocon2024-scut-r1\freertos.o: ../Drivers/CMSIS/Include/core_cm4.h
-robocon2024-scut-r1\freertos.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
-robocon2024-scut-r1\freertos.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+robocon2024-scut-r1\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+robocon2024-scut-r1\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 robocon2024-scut-r1\freertos.o: ../Core/Inc/bsp_can.h
 robocon2024-scut-r1\freertos.o: ../User/motorctrl.h
 robocon2024-scut-r1\freertos.o: ../Core/Inc/can.h
@@ -59,7 +59,7 @@ robocon2024-scut-r1\freertos.o: ../Core/Inc/tim.h
 robocon2024-scut-r1\freertos.o: ../Core/Inc/usart.h
 robocon2024-scut-r1\freertos.o: ../Core/Inc/gpio.h
 robocon2024-scut-r1\freertos.o: ../User/motorctrl.h
-robocon2024-scut-r1\freertos.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+robocon2024-scut-r1\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 robocon2024-scut-r1\freertos.o: ../User/calculate.h
 robocon2024-scut-r1\freertos.o: ../User/clamp/logic.h
 robocon2024-scut-r1\freertos.o: ../User/delay.h

@@ -1,6 +1,6 @@
 robocon2024-scut-r1\bsp_can.o: ..\Core\Src\bsp_can.c
 robocon2024-scut-r1\bsp_can.o: ../Core/Inc/bsp_can.h
-robocon2024-scut-r1\bsp_can.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+robocon2024-scut-r1\bsp_can.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 robocon2024-scut-r1\bsp_can.o: ../Core/Inc/main.h
 robocon2024-scut-r1\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 robocon2024-scut-r1\bsp_can.o: ../Core/Inc/stm32f4xx_hal_conf.h
@@ -16,7 +16,7 @@ robocon2024-scut-r1\bsp_can.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 robocon2024-scut-r1\bsp_can.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 robocon2024-scut-r1\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 robocon2024-scut-r1\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-robocon2024-scut-r1\bsp_can.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+robocon2024-scut-r1\bsp_can.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 robocon2024-scut-r1\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 robocon2024-scut-r1\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 robocon2024-scut-r1\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h

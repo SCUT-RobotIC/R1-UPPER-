@@ -1,9 +1,9 @@
 robocon2024-scut-r1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
-robocon2024-scut-r1\tasks.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-robocon2024-scut-r1\tasks.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+robocon2024-scut-r1\tasks.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+robocon2024-scut-r1\tasks.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 robocon2024-scut-r1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-robocon2024-scut-r1\tasks.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
-robocon2024-scut-r1\tasks.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+robocon2024-scut-r1\tasks.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+robocon2024-scut-r1\tasks.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 robocon2024-scut-r1\tasks.o: ../Core/Inc/FreeRTOSConfig.h
 robocon2024-scut-r1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 robocon2024-scut-r1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

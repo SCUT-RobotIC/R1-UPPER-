@@ -63,6 +63,13 @@
 #include "calculate.h"
 #include "main.h"
 
+boolean_T SWITCH_LF_State = 0;
+boolean_T SWITCH_LB_State = 0;
+boolean_T SWITCH_RF_State = 0;
+boolean_T SWITCH_RB_State = 0; 
+
+int16_t temp_switch = 0;
+
 // 计算校验位
 uint8_t CalculateParity(const uint8_t *data, int dataSize)
 {
@@ -181,37 +188,47 @@ void CAL_MESSAGE(void)
 			if ((B2 & 0x01) == 0 && (DataRe.data[BOT2] & 0x01) == 0x01)
 			{
 				// 开关A1开
+				SWITCH_LB_State = 1;
+				temp_switch = 1;
 			}
 			else if ((B2 & 0x01) == 0x01 && (DataRe.data[BOT2] & 0x01) == 0)
 			{
 				// 开关A1关
+				SWITCH_LB_State = 0;
+				temp_switch = 0;
 			}
 
 			if ((B2 & 0x02) == 0 && (DataRe.data[BOT2] & 0x02) == 0x02)
 			{
 				// 开关A2开
+				temp_switch = 2;
 			}
 			else if ((B2 & 0x02) == 0x02 && (DataRe.data[BOT2] & 0x02) == 0)
 			{
 				// 开关A2关
+				temp_switch = 0;
 			}
 
 			if ((B2 & 0x04) == 0 && (DataRe.data[BOT2] & 0x04) == 0x04)
 			{
 				// 开关B1开
+				temp_switch = 3;
 			}
 			else if ((B2 & 0x04) == 0x04 && (DataRe.data[BOT2] & 0x04) == 0)
 			{
 				// 开关B1关
+				temp_switch = 0;
 			}
 
 			if ((B2 & 0x08) == 0 && (DataRe.data[BOT2] & 0x08) == 0x08)
 			{
 				// 开关B2开
+				temp_switch = 4;
 			}
 			else if ((B2 & 0x08) == 0x08 && (DataRe.data[BOT2] & 0x08) == 0)
 			{
 				// 开关B2关
+				temp_switch = 0;
 			}
 
 			if ((B2 & 0x10) == 0 && (DataRe.data[BOT2] & 0x10) == 0x10)

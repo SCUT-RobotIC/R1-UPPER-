@@ -2,8 +2,8 @@
 extern motor_measure_t *motor_data[8];
 extern motor_measure_t *motor_data1[8];
 double output[16] = {0};
-int BrakeFlag=0;
-int BrakeAng[4]={0};
+int BrakeFlag = 0;
+int BrakeAng[4] = {0};
 double mult = 1;
 double Deadband = 500;
 
@@ -14,43 +14,42 @@ void ctrlmotor(double Vx, double Vy, double omega)
          (fabs((-sqrt(2) / 2 * Vx + sqrt(2) / 2 * Vy + omega) * mult) > 8191) ||
          (fabs((-sqrt(2) / 2 * Vx - sqrt(2) / 2 * Vy + omega) * mult) > 8191))
     mult = 0.98 * mult;
-if(fabs((sqrt(2) / 2 * Vx - sqrt(2) / 2 * Vy + omega) * mult)==0&&fabs((sqrt(2) / 2 * Vx + sqrt(2) / 2 * Vy - omega) * mult)==0&&
-	fabs((-sqrt(2) / 2 * Vx + sqrt(2) / 2 * Vy + omega) * mult)==0&fabs((-sqrt(2) / 2 * Vx - sqrt(2) / 2 * Vy + omega) * mult)==0)
-{
-	  rtU.yaw_status_CH1_1=2;
-		rtU.yaw_status_CH1_2=2;
-		rtU.yaw_status_CH1_3=2;
-		rtU.yaw_status_CH1_4=2;
-	if(BrakeFlag==0&&motor_data[0]->ecd<8191&&motor_data[1]->ecd<8191
-		&&motor_data[2]->ecd<8191&&motor_data[3]->ecd<8191){
-		BrakeAng[0]=motor_data[0]->ecd+motor_data[0]->circle*8191;
-		BrakeAng[1]=motor_data[1]->ecd+motor_data[1]->circle*8191;
-		BrakeAng[2]=motor_data[2]->ecd+motor_data[2]->circle*8191;
-		BrakeAng[3]=motor_data[3]->ecd+motor_data[3]->circle*8191;
-		BrakeFlag=1;
-	}
-	  rtU.yaw_target_CH1_1 =BrakeAng[0];
-	  rtU.yaw_target_CH1_2 =BrakeAng[1];
-	  rtU.yaw_target_CH1_3 =BrakeAng[2];
-	  rtU.yaw_target_CH1_4 =BrakeAng[3];
-	BrakeFlag=1;
-}
-	else	
-	{
-		BrakeFlag=0;
-	  rtU.yaw_status_CH1_1=1;
-		rtU.yaw_status_CH1_2=1;
-		rtU.yaw_status_CH1_3=1;
-		rtU.yaw_status_CH1_4=1;
+  if (fabs((sqrt(2) / 2 * Vx - sqrt(2) / 2 * Vy + omega) * mult) == 0 && fabs((sqrt(2) / 2 * Vx + sqrt(2) / 2 * Vy - omega) * mult) == 0 &&
+      fabs((-sqrt(2) / 2 * Vx + sqrt(2) / 2 * Vy + omega) * mult) == 0 & fabs((-sqrt(2) / 2 * Vx - sqrt(2) / 2 * Vy + omega) * mult) == 0)
+  {
+    rtU.yaw_status_CH1_1 = 2;
+    rtU.yaw_status_CH1_2 = 2;
+    rtU.yaw_status_CH1_3 = 2;
+    rtU.yaw_status_CH1_4 = 2;
+    if (BrakeFlag == 0 && motor_data[0]->ecd < 8191 && motor_data[1]->ecd < 8191 && motor_data[2]->ecd < 8191 && motor_data[3]->ecd < 8191)
+    {
+      BrakeAng[0] = motor_data[0]->ecd + motor_data[0]->circle * 8191;
+      BrakeAng[1] = motor_data[1]->ecd + motor_data[1]->circle * 8191;
+      BrakeAng[2] = motor_data[2]->ecd + motor_data[2]->circle * 8191;
+      BrakeAng[3] = motor_data[3]->ecd + motor_data[3]->circle * 8191;
+      BrakeFlag = 1;
+    }
+    rtU.yaw_target_CH1_1 = BrakeAng[0];
+    rtU.yaw_target_CH1_2 = BrakeAng[1];
+    rtU.yaw_target_CH1_3 = BrakeAng[2];
+    rtU.yaw_target_CH1_4 = BrakeAng[3];
+    BrakeFlag = 1;
+  }
+  else
+  {
+    BrakeFlag = 0;
+    rtU.yaw_status_CH1_1 = 1;
+    rtU.yaw_status_CH1_2 = 1;
+    rtU.yaw_status_CH1_3 = 1;
+    rtU.yaw_status_CH1_4 = 1;
 
+    rtU.yaw_target_CH1_1 = (sqrt(2) / 2 * Vx - sqrt(2) / 2 * Vy + omega) * mult;
+    rtU.yaw_target_CH1_2 = (sqrt(2) / 2 * Vx + sqrt(2) / 2 * Vy + omega) * mult;
+    rtU.yaw_target_CH1_3 = (-sqrt(2) / 2 * Vx + sqrt(2) / 2 * Vy + omega) * mult;
+    rtU.yaw_target_CH1_4 = (-sqrt(2) / 2 * Vx - sqrt(2) / 2 * Vy + omega) * mult;
 
-  rtU.yaw_target_CH1_1 = (sqrt(2) / 2 * Vx - sqrt(2) / 2 * Vy + omega) * mult;
-  rtU.yaw_target_CH1_2 = (sqrt(2) / 2 * Vx + sqrt(2) / 2 * Vy + omega) * mult;
-  rtU.yaw_target_CH1_3 = (-sqrt(2) / 2 * Vx + sqrt(2) / 2 * Vy + omega) * mult;
-  rtU.yaw_target_CH1_4 = (-sqrt(2) / 2 * Vx - sqrt(2) / 2 * Vy + omega) * mult;
-
-  mult = 1;
-	}
+    mult = 1;
+  }
 }
 
 void get_msgn(void)
@@ -124,29 +123,27 @@ void get_msgn(void)
   rtU.yaw_ecd_CH2_7 = motor_data1[6]->ecd;
   rtU.yaw_last_ecd_CH2_7 = motor_data1[6]->last_ecd;
   rtU.yaw_circle_CH2_7 = motor_data1[6]->circle;
-
-
 }
 
 void assign_output(void)
 {
   if (rtU.yaw_status_CH1_1 == 1)
-    output[CH1_1] = rtY.yaw_SPD_OUT_CH1_1;
+    output[CH1_1] = rtY.yaw_SPD_OUT_CH1_1 + 100;
   else
     output[CH1_1] = rtY.yaw_ANG_OUT_CH1_1;
 
   if (rtU.yaw_status_CH1_2 == 1)
-    output[CH1_2] = rtY.yaw_SPD_OUT_CH1_2;
+    output[CH1_2] = rtY.yaw_SPD_OUT_CH1_2 + 100;
   else
     output[CH1_2] = rtY.yaw_ANG_OUT_CH1_2;
 
   if (rtU.yaw_status_CH1_3 == 1)
-    output[CH1_3] = rtY.yaw_SPD_OUT_CH1_3;
+    output[CH1_3] = rtY.yaw_SPD_OUT_CH1_3 + 100;
   else
     output[CH1_3] = rtY.yaw_ANG_OUT_CH1_3;
 
   if (rtU.yaw_status_CH1_4 == 1)
-    output[CH1_4] = rtY.yaw_SPD_OUT_CH1_4;
+    output[CH1_4] = rtY.yaw_SPD_OUT_CH1_4 + 100;
   else
     output[CH1_4] = rtY.yaw_ANG_OUT_CH1_4;
 
@@ -203,7 +200,7 @@ void assign_output(void)
   CAN1_cmd_chassis(output[CH1_1], output[CH1_2], output[CH1_3], output[CH1_4], output[CH1_5], output[CH1_6], output[CH1_7], 0);
   CAN2_cmd_chassis(output[CH2_1], output[CH2_2], output[CH2_3], output[CH2_4], output[CH2_5], output[CH2_6], output[CH2_7], 0);
 }
-void set_mode(int mode_CH1_1, int mode_CH1_2, int mode_CH1_3, int mode_CH1_4, int mode_CH1_5, int mode_CH1_6, int mode_CH1_7, 
+void set_mode(int mode_CH1_1, int mode_CH1_2, int mode_CH1_3, int mode_CH1_4, int mode_CH1_5, int mode_CH1_6, int mode_CH1_7,
               int mode_CH2_1, int mode_CH2_2, int mode_CH2_3, int mode_CH2_4, int mode_CH2_5, int mode_CH2_6, int mode_CH2_7)
 {
   rtU.yaw_status_CH1_1 = mode_CH1_1;
@@ -221,7 +218,6 @@ void set_mode(int mode_CH1_1, int mode_CH1_2, int mode_CH1_3, int mode_CH1_4, in
   rtU.yaw_status_CH2_5 = mode_CH2_5;
   rtU.yaw_status_CH2_6 = mode_CH2_6;
   rtU.yaw_status_CH2_7 = mode_CH2_7;
-
 }
 void PID_Speed_Para_Init(int channel, int motor, double kp, double ki, double kd)
 {

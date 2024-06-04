@@ -48,7 +48,7 @@
 "robocon2024-scut-r1\pid_model.o"
 "robocon2024-scut-r1\pid_model_data.o"
 "robocon2024-scut-r1\solve.o"
-"../Middlewares/ST/ARM/DSP/Lib/arm_cortexM4l_math.lib"
+"..\Middlewares\ST\ARM\DSP\Lib\arm_cortexM4l_math.lib"
 --strict --scatter "Robocon2024-SCUT-R1\Robocon2024-SCUT-R1.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

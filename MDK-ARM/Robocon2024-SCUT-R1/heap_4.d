@@ -1,8 +1,8 @@
 robocon2024-scut-r1\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
-robocon2024-scut-r1\heap_4.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+robocon2024-scut-r1\heap_4.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 robocon2024-scut-r1\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-robocon2024-scut-r1\heap_4.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
-robocon2024-scut-r1\heap_4.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+robocon2024-scut-r1\heap_4.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+robocon2024-scut-r1\heap_4.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 robocon2024-scut-r1\heap_4.o: ../Core/Inc/FreeRTOSConfig.h
 robocon2024-scut-r1\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 robocon2024-scut-r1\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

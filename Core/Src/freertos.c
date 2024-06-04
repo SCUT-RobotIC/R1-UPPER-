@@ -61,8 +61,8 @@ extern motor_measure_t *motor_data1[8];
 /* USER CODE BEGIN PD */
 
 extern int receivefactor[4];
-extern int factor;
-extern int factor1;
+extern int factor[2];
+extern int factor1[2];
 
 extern DataPacket DataRe;
 extern int16_t lx, ly, rx, ry, lp, rp;
@@ -70,6 +70,11 @@ extern uint8_t B1, B2;
 extern uint8_t Cal_Parity;
 
 extern uint8_t BUTTON_State;
+extern boolean_T SWITCH_LF_State;
+extern boolean_T SWITCH_LB_State;
+extern boolean_T SWITCH_RF_State;
+extern boolean_T SWITCH_RB_State;
+
 extern double output[16];
 
 double Vx, Vy, omega = 0;
@@ -118,7 +123,7 @@ double ANG_TGT[8] = {0};
 double current_ang = 0;
 // can输出数�??
 int can_output[8] = {0};
-// 标志�????
+// 标志�????
 uint8_t FLAG = 0;
 // 当前角度
 double current_target[8] = {0};
@@ -139,30 +144,30 @@ double target_error[8] = {0};
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
-  .name = "defaultTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+    .name = "defaultTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
 };
 /* Definitions for ballTask */
 osThreadId_t ballTaskHandle;
 const osThreadAttr_t ballTask_attributes = {
-  .name = "ballTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "ballTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 /* Definitions for clampTask */
 osThreadId_t clampTaskHandle;
 const osThreadAttr_t clampTask_attributes = {
-  .name = "clampTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "clampTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 /* Definitions for clampPIDTask */
 osThreadId_t clampPIDTaskHandle;
 const osThreadAttr_t clampPIDTask_attributes = {
-  .name = "clampPIDTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "clampPIDTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -252,31 +257,13 @@ void StartClampPIDTask(void *argument);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /**
-  * @brief  FreeRTOS initialization
-  * @param  None
-  * @retval None
-  */
-void MX_FREERTOS_Init(void) {
+ * @brief  FreeRTOS initialization
+ * @param  None
+ * @retval None
+ */
+void MX_FREERTOS_Init(void)
+{
   /* USER CODE BEGIN Init */
-  // Ball PID Init
-  // rtP.Kp_shoot_up = 2;
-  // rtP.Ki_shoot_up = 0.7;
-  // rtP.Kd_shoot_up = 0.1;
-
-  // rtP.Kp_shoot_r = 2;
-  // rtP.Ki_shoot_r = 0.7;
-  // rtP.Kd_shoot_r = 0.1;
-
-  // rtP.Kp_shoot_l = 2;
-  // rtP.Ki_shoot_l = 0.7;
-  // rtP.Kd_shoot_l = 0.1;
-
-  // rtP.Kp_lift = 2;
-  // rtP.Ki_lift = 0.7;
-  // rtP.Kd_lift = 0.1;
-
-  // rtP.M3508_max = M3508_MAX;
-  // rtP.M2006_max = M2006_MAX;
 
   /* USER CODE END Init */
 
@@ -316,7 +303,6 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
   /* USER CODE END RTOS_EVENTS */
-
 }
 
 /* USER CODE BEGIN Header_StartDefaultTask */
@@ -332,106 +318,103 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for (;;)
   {
-		CAL_TXMESSAGE();
-		
-//    Vx = rx / 9;
-//    Vy = ry / 9;
-//    omega = lx / 9;
-//    // Vx = 0;
-//    // Vy = 0;
-//    // omega = 0;
+    CAL_TXMESSAGE();
+    if (SWITCH_LB_State == 1)
+    {
+      Vx = RC.Vx;
+      Vy = RC.Vy;
+      omega = RC.omega;
+    }
+    else if (SWITCH_LB_State == 0)
+    {
+      Vx = rx / 9;
+      Vy = ry / 9;
+      omega = lx / 9;
 
-//    if (Vx > Controller_Deadband)
-//    {
-//      Vx -= Controller_Deadband;
-//    }
-//    else if (Vx < -Controller_Deadband)
-//    {
-//      Vx += Controller_Deadband;
-//    }
-//    else
-//    {
-//      Vx = 0;
-//    }
+      if (Vx > Controller_Deadband)
+      {
+        Vx -= Controller_Deadband;
+      }
+      else if (Vx < -Controller_Deadband)
+      {
+        Vx += Controller_Deadband;
+      }
+      else
+      {
+        Vx = 0;
+      }
 
-//    if (Vy > Controller_Deadband)
-//    {
-//      Vy -= Controller_Deadband;
-//    }
-//    else if (Vy < -Controller_Deadband)
-//    {
-//      Vy += Controller_Deadband;
-//    }
-//    else
-//    {
-//      Vy = 0;
-//    }
+      if (Vy > Controller_Deadband)
+      {
+        Vy -= Controller_Deadband;
+      }
+      else if (Vy < -Controller_Deadband)
+      {
+        Vy += Controller_Deadband;
+      }
+      else
+      {
+        Vy = 0;
+      }
 
-//    if (omega > Controller_Deadband)
-//    {
-//      omega -= Controller_Deadband;
-//    }
-//    else if (omega < -Controller_Deadband)
-//    {
-//      omega += Controller_Deadband;
-//    }
-//    else
-//    {
-//      omega = 0;
-//    }
+      if (omega > Controller_Deadband)
+      {
+        omega -= Controller_Deadband;
+      }
+      else if (omega < -Controller_Deadband)
+      {
+        omega += Controller_Deadband;
+      }
+      else
+      {
+        omega = 0;
+      }
+    }
 
-//    factor1++;
+    factor1[0]++;
 
-//    if (receivefactor[0] == 0) // 没接收到就增加标志位
-//      factor++;
-//    if (factor > 300)
-//    {
-//      Vx = 0;
-//      Vy = 0;
-//      omega = 0;
+    if (receivefactor[0] == 0) // 没接收到就增加标志位
+      factor[0]++;
+    if (factor[0] > 300)
+    {
+      Vx = 0;
+      Vy = 0;
+      omega = 0;
 
-//      rx = 0;
-//      ry = 0;
-//      lx = 0;
-//      ly = 0;
-//      factor = 301;
-//    }                       // 1s没收到就全部停下
-//    if (receivefactor[0] == 1) // 接收到就标志位置0
-//      factor = 0;
+      rx = 0;
+      ry = 0;
+      lx = 0;
+      ly = 0;
+      factor[0] = 301;
+    } // 1s没收到就全部停下
+    if (receivefactor[0] == 1) // 接收到就标志位置0
+      factor[0] = 0;
 
-//    if (factor1 == 50)
-//    {
-//      receivefactor[0] = 0; // 0.05s更新1次确定为没接收到
-//      factor1 = 0;
-//    }
+    if (factor1[0] == 50)
+    {
+      receivefactor[0] = 0; // 0.05s更新1次确定为没接收到
+      factor1[0] = 0;
+    }
 
-    Vx   = RC.Vx;
-    Vy   = RC.Vy;
-    omega = RC.omega;
-//      Vx = 0;
-//      Vy = 0;
-//      omega = 0;
+    factor1[1]++;
 
-//    factor1++;
+    if (receivefactor[1] == 0) // 没接收到就增加标志位
+      factor[1]++;
+    if (factor[1] > 300)
+    {
+      Vx = 0;
+      Vy = 0;
+      omega = 0;
+      factor[1] = 301;
+    } // 1s没收到就全部停下
+    if (receivefactor[1] == 1) // 接收到就标志位置0
+      factor[1] = 0;
 
-//    if (receivefactor[1] == 0) // 没接收到就增加标志位
-//      factor++;
-//    if (factor > 300)
-//    {
-//      Vx = 0;
-//      Vy = 0;
-//      omega = 0;
-//      factor = 301;
-//    }                       // 1s没收到就全部停下
-//    if (receivefactor[1] == 1) // 接收到就标志位置0
-//      factor = 0;
-
-//    if (factor1 == 50)
-//    {
-//      receivefactor[1] = 0; // 0.05s更新1次确定为没接收到
-//      factor1 = 0;
-//    }
-
+    if (factor1[1] == 50)
+    {
+      receivefactor[1] = 0; // 0.05s更新1次确定为没接收到
+      factor1[1] = 0;
+    }
 
     HAL_IWDG_Refresh(&hiwdg); // 喂狗
 
@@ -440,33 +423,9 @@ void StartDefaultTask(void *argument)
     get_msgn();
 
     set_mode(VEL, VEL, VEL, VEL, VEL, VEL, VEL,
-             ANG, ANG, ANG, ANG, VEL, VEL, VEL); // �?7个can1,�?7个can2
+             ANG, ANG, ANG, ANG, VEL, VEL, VEL); // �?7个can1,�?7个can2
 
     ctrlmotor(Vx, Vy, omega);
-    // ctrlmotor(temp_Vx, temp_Vy, temp_omega);
-
-    /* 其他电机控制目标设定示例
-    rtU.yaw_target4 = 1000;
-    rtU.yaw_target5 = 2000;
-    rtU.yaw_target6 = 3000;
-    rtU.yaw_target7 = 4000;
-    rtU.yaw_target8 = theta[0] * 36 * 8191 * 47 / (17 * 360);
-    rtU.yaw_target9 = theta[1] * 36 * 8191 * 47 / (17 * 360);
-    rtU.yaw_target10 = theta[2] * 36 * 8191 * 47 / (17 * 360);
-    rtU.yaw_target11 = theta[3] * 36 * 8191 * 47 / (17 * 360);
-    rtU.yaw_target12 = 1000;
-    rtU.yaw_target13 = 2000;
-    rtU.yaw_target14 = 3000;
-    rtU.yaw_target15 = 4000;
-    */
-
-    // assign_output();
-
-    // PID_MODEL_step();
-
-    // data update
-    // motor_state_update();
-    // motor_state_update1();
     osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
@@ -545,6 +504,10 @@ void StartClampTask(void *argument)
   /* Infinite loop */
   for (;;)
   {
+    if (RC.action == CLAMP_PINCH)
+    {
+      logic_change = PINCH;
+    }
     LOGIC();
 
     vTaskDelay(100);
@@ -607,4 +570,3 @@ void StartClampPIDTask(void *argument)
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
-
