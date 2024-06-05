@@ -396,25 +396,25 @@ void StartDefaultTask(void *argument)
       factor1[0] = 0;
     }
 
-    factor1[1]++;
+    // factor1[1]++;
 
-    if (receivefactor[1] == 0) // 没接收到就增加标志位
-      factor[1]++;
-    if (factor[1] > 300)
-    {
-      Vx = 0;
-      Vy = 0;
-      omega = 0;
-      factor[1] = 301;
-    } // 1s没收到就全部停下
-    if (receivefactor[1] == 1) // 接收到就标志位置0
-      factor[1] = 0;
+    // if (receivefactor[1] == 0) // 没接收到就增加标志位
+    //   factor[1]++;
+    // if (factor[1] > 300)
+    // {
+    //   Vx = 0;
+    //   Vy = 0;
+    //   omega = 0;
+    //   factor[1] = 301;
+    // } // 1s没收到就全部停下
+    // if (receivefactor[1] == 1) // 接收到就标志位置0
+    //   factor[1] = 0;
 
-    if (factor1[1] == 50)
-    {
-      receivefactor[1] = 0; // 0.05s更新1次确定为没接收到
-      factor1[1] = 0;
-    }
+    // if (factor1[1] == 50)
+    // {
+    //   receivefactor[1] = 0; // 0.05s更新1次确定为没接收到
+    //   factor1[1] = 0;
+    // }
 
     HAL_IWDG_Refresh(&hiwdg); // 喂狗
 

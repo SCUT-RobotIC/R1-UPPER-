@@ -168,7 +168,7 @@
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>DataRe</ItemText>
+          <ItemText>DataRe,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
@@ -236,6 +236,26 @@
           <count>4</count>
           <WinNumber>2</WinNumber>
           <ItemText>omega</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>rx,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>ry,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>lx,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>ly,0x0A</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>

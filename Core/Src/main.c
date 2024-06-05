@@ -63,8 +63,8 @@ uint8_t aRxBuffer2[RXBUFFERSIZE];
 UART_HandleTypeDef UART2_Handler;
 
 int receivefactor[2];
-int factor[2] = 0;
-int factor1[2] = 0;
+int factor[2] = {0};
+int factor1[2] = {0};
 
 // double Vx, Vy, omega = 0;
 
